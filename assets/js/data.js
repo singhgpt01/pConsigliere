@@ -13,8 +13,8 @@ window.CONSIGLIERE_DATA = {
     positioning: "Facilitating Global Commodity Trade.",
     supportingStatement: "Connecting Markets. Facilitating Opportunity.",
     role: "Commercial Facilitator & Intermediary",
-    contactEmail: "info@consigliereholdings.com",
-    deskEmail: "gs@consigliereholdings.com"
+    contactEmail: "gs@consigliereholdings.com",
+    deskEmail: "info@consigliereholdings.com"
   },
 
   // Business Divisions
