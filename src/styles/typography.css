@@ -1,0 +1,45 @@
+/* ==========================================================================
+   CONSIGLIERE HOLDINGS - TYPOGRAPHY
+   Serif: Cormorant Garamond (Editorial, Sovereign, Dignified)
+   Sans: Manrope (Crisp, Highly Legible, Modern Corporate)
+   Mono: JetBrains Mono (Data, Specs, Terminal Coordinates)
+   ========================================================================== */
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-gold);
+  margin-bottom: 1.15rem;
+}
+
+.section-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent-gold-border);
+  margin-left: 0.75rem;
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 1.1rem;
+}
+
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 680px;
+  font-weight: 400;
+}

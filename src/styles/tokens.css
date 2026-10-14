@@ -1,0 +1,59 @@
+/* ==========================================================================
+   CONSIGLIERE HOLDINGS - DESIGN SYSTEM TOKENS
+   Aesthetic: Sophisticated International Commercial Group
+   Palette: Near-Black, Graphite, Warm Ivory, Muted Slate & Restrained Champagne Gold
+   ========================================================================== */
+
+:root {
+  /* Core Brand Colors */
+  --color-bg-primary: #0A0C0F;       /* Deep near-black */
+  --color-bg-secondary: #12161B;     /* Graphite */
+  --color-bg-elevated: #161B22;      /* Elevated Card Surface */
+  --color-bg-surface: #1B222B;       /* Hover Surface */
+  --color-bg-subtle: rgba(255, 255, 255, 0.025);
+
+  /* Typography Colors */
+  --text-primary: #F3F0E8;           /* Warm Ivory */
+  --text-secondary: #A2A8B0;         /* Muted Cool Grey */
+  --text-muted: #6B7280;             /* Dark Neutral Grey */
+  --text-dark: #0A0C0F;
+
+  /* Accent Metallics (Restrained Champagne Gold) */
+  --color-accent-gold: #C6A66B;      /* Champagne Gold */
+  --color-accent-gold-light: #DFC493;
+  --color-accent-gold-dark: #A38448;
+  --color-accent-gold-subtle: rgba(198, 166, 107, 0.10);
+  --color-accent-gold-border: rgba(198, 166, 107, 0.28);
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-active: rgba(198, 166, 107, 0.40);
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.60);
+  --shadow-gold-subtle: 0 4px 18px rgba(198, 166, 107, 0.15);
+
+  /* Typography Stack */
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Motion & Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.16s ease;
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout Spacing & Geometry */
+  --container-max: 1240px;
+  --container-wide: 1380px;
+  --header-height: 74px;
+  --header-height-scrolled: 64px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+}

@@ -1,0 +1,10 @@
+/* ==========================================================================
+   CONSIGLIERE HOLDINGS - GLOBAL DESIGN SYSTEM
+   Standard CSS Architecture with Native Custom Properties
+   ========================================================================== */
+
+@import './tokens.css';
+@import './typography.css';
+@import './layout.css';
+@import './animations.css';
+@import './components.css';
