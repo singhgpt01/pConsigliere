@@ -11,6 +11,7 @@ export interface FooterColumn {
 
 export const mainNavLinks: NavLinkItem[] = [
   { id: 'commodities', label: 'Commodities', href: '#commodities' },
+  { id: 'framework', label: 'Transaction Framework', href: '#framework' },
   { id: 'approach', label: 'Our Approach', href: '#approach' },
   { id: 'reach', label: 'International Reach', href: '#reach' },
   { id: 'contact', label: 'Commercial Desk', href: '#contact' }
@@ -31,8 +32,9 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Facilitation',
     links: [
+      { label: 'Transaction Framework', href: '#framework' },
       { label: 'Commercial Process', href: '#approach' },
-      { label: 'Counterparty Qualification', href: '#approach' },
+      { label: 'Counterparty Qualification', href: '#framework' },
       { label: 'Global Trade Corridors', href: '#reach' },
       { label: 'Direct Commercial Desk', href: '#contact' }
     ]

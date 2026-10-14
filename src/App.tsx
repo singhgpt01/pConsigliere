@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { Hero } from './components/home/Hero';
 import { FeaturedCommodity } from './components/home/FeaturedCommodity';
 import { Commodities } from './components/home/Commodities';
+import { TransactionFramework } from './components/home/TransactionFramework';
 import { CommercialApproach } from './components/home/CommercialApproach';
 import { GlobalPerspective } from './components/home/GlobalPerspective';
 import { Contact } from './components/home/Contact';
@@ -14,6 +15,7 @@ import { EnquiryConfirmationModal, FormSubmissionData } from './components/modal
 export const App: React.FC = () => {
   const { isScrolled, activeSection } = useScrollProgress([
     'commodities',
+    'framework',
     'approach',
     'reach',
     'contact'
@@ -56,6 +58,9 @@ export const App: React.FC = () => {
 
         {/* Section C — Commodity Portfolio */}
         <Commodities onSelectCommodity={handleCommoditySelect} />
+
+        {/* New Section — Our Transaction Framework */}
+        <TransactionFramework />
 
         {/* Section D — Our Approach (4 Clear Stages) */}
         <CommercialApproach />
