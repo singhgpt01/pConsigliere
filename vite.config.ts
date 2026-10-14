@@ -1,27 +1,17 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import type { Plugin } from 'vite';
 
-const fixWslWatcher: Plugin = {
-  name: 'fix-wsl-watcher',
-  configureServer(server) {
-    server.watcher.on('error', (error: NodeJS.ErrnoException) => {
-      if (error.code === 'EIO' || error.code === 'ENOENT') {
-        // Suppress I/O errors from WSL-mounted Windows drives (/mnt/c/, etc.)
-        return;
-      }
-      throw error;
-    });
-  }
-};
+// Suppress WSL EIO errors caused by Windows-mounted drives (/mnt/c/ etc.)
+// Vite uses multiple internal chokidar watchers; this catches crashes from all of them.
+process.on('uncaughtException', (error: NodeJS.ErrnoException) => {
+  if (error.code === 'EIO') return;
+  throw error;
+});
 
 export default defineConfig({
-  plugins: [react(), fixWslWatcher],
+  plugins: [react()],
   server: {
     port: 5173,
-    host: true,
-    watch: {
-      ignored: (path: string) => path.startsWith('/mnt/')
-    }
+    host: true
   }
 });
