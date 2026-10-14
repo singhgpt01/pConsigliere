@@ -25,10 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTechnologies }) => {
           <div className="footer-brand">
             <a href="#" className="brand-identity">
               <div className="brand-monogram">C</div>
-              <div className="brand-title-wrap">
-                <span className="brand-wordmark">CONSIGLIERE HOLDINGS</span>
-                <span className="brand-sub">Commercial Facilitation</span>
-              </div>
+              <span className="brand-wordmark">CONSIGLIERE HOLDINGS</span>
             </a>
             <p style={{ fontSize: '0.86rem', color: 'var(--color-sand)', lineHeight: '1.7', maxWidth: '340px', marginTop: '1rem', marginBottom: '1.25rem' }}>
               International commodity commercial facilitation connecting vetted counterparties across global energy, industrial, and agricultural markets.

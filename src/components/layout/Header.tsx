@@ -24,10 +24,7 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled, activeSection }) => 
           {/* Brand Identity */}
           <a href="#" className="brand-identity" aria-label="Consigliere Holdings Home">
             <div className="brand-monogram">C</div>
-            <div className="brand-title-wrap">
-              <span className="brand-wordmark">CONSIGLIERE HOLDINGS</span>
-              <span className="brand-sub">Commercial Facilitation</span>
-            </div>
+            <span className="brand-wordmark">CONSIGLIERE HOLDINGS</span>
           </a>
 
           {/* Desktop Navigation */}
