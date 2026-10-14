@@ -1032,7 +1032,7 @@ function ConsigliereApp() {
             </div>
 
             <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.75rem' }}>
-              Submissions are reviewed directly by the Consigliere Trading Desk (<code>enquiries@consigliereholdings.com</code>). You can copy these structured parameters to your clipboard or launch an email draft directly:
+              Submissions are reviewed directly by the Consigliere Trading Desk (<code>info@consigliereholdings.com</code>). You can copy these structured parameters to your clipboard or launch an email draft directly:
             </p>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
