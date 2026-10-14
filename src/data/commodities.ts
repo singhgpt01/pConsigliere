@@ -173,32 +173,6 @@ export const commoditiesData: CommodityItem[] = [
     ],
     availabilityNote: "Supply engagement arranged with verified manufacturing sources."
   },
-  {
-    id: "base-oils",
-    category: "industrial",
-    categoryLabel: "Industrial Commodities",
-    name: "Base Oils",
-    tagline: "Group I, Group II & Group III Lubricant Feedstocks",
-    overview: "Commercial intermediation connecting lubricant blenders and industrial compounders with virgin base oil fractions.",
-    specs: [
-      { label: "Groups Handled", val: "Group I (SN 150/500), Group II, Group III" },
-      { label: "Transport", val: "Flexitanks, ISO tanks, bulk parcel" }
-    ],
-    availabilityNote: "Arranged against formal specifications and commercial requirement."
-  },
-  {
-    id: "metals",
-    category: "industrial",
-    categoryLabel: "Industrial Commodities",
-    name: "Ferrous & Non-Ferrous Metals",
-    tagline: "Copper Cathodes, Aluminium Ingot & Industrial Minerals",
-    overview: "Facilitating bilateral trade relationships for industrial refined metals, scrap feedstocks, and strategic mineral ores, subject to verified mandate.",
-    specs: [
-      { label: "Materials", val: "Copper Grade A (99.99%), Aluminium, Zinc" },
-      { label: "Assay", val: "Standard international surveyor assay (Alex Stewart / SGS)" }
-    ],
-    availabilityNote: "Exclusively facilitated under transparent seller mandate representation."
-  },
 
   // --- AGRICULTURAL COMMODITIES ---
   {
