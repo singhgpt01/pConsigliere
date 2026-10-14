@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { mainNavLinks } from '../../data/navigation';
-import { Button } from '../common/Button';
 
 export interface HeaderProps {
   isScrolled: boolean;
@@ -44,28 +43,28 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled, activeSection }) => 
             ))}
           </nav>
 
-          {/* Actions & Mobile Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
-            <Button
-              variant="secondary"
+          {/* Actions & Mobile Menu Toggle */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <a
               href="#contact"
-              className="nav-cta nav-cta-desktop"
+              className="btn btn-primary nav-cta-desktop"
+              style={{ padding: '0.65rem 1.35rem', fontSize: '0.78rem' }}
             >
               Discuss a Requirement
-            </Button>
+            </a>
 
             <button
               type="button"
               className="nav-toggle-btn"
               onClick={toggleMobileMenu}
-              aria-label="Toggle navigation menu"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
             >
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 {mobileMenuOpen ? (
-                  <path d="M18 6L6 18M6 6l12 12" />
+                  <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
                 ) : (
-                  <path d="M3 12h18M3 6h18M3 18h18" />
+                  <path d="M3 12h18M3 6h18M3 18h18" strokeLinecap="round" />
                 )}
               </svg>
             </button>
@@ -76,28 +75,45 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled, activeSection }) => 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="mobile-nav-panel">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+            <div className="brand-identity">
+              <div className="brand-monogram">C</div>
+              <span className="brand-wordmark" style={{ fontSize: '1rem' }}>CONSIGLIERE</span>
+            </div>
+            <button
+              type="button"
+              onClick={closeMobileMenu}
+              style={{ padding: '0.5rem', color: 'var(--color-walnut)', background: 'none', border: 'none', cursor: 'pointer' }}
+              aria-label="Close menu"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {mainNavLinks.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
-                className="nav-item"
-                style={{ fontSize: '1.2rem' }}
+                className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
                 onClick={closeMobileMenu}
               >
                 {link.label}
               </a>
             ))}
           </div>
-          <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '1.75rem' }}>
-            <Button
-              variant="primary"
+
+          <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
+            <a
               href="#contact"
-              style={{ width: '100%' }}
+              className="btn btn-primary"
+              style={{ width: '100%', padding: '0.9rem', textAlign: 'center' }}
               onClick={closeMobileMenu}
             >
               Discuss a Requirement
-            </Button>
+            </a>
           </div>
         </div>
       )}

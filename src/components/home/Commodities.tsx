@@ -1,12 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Container } from '../layout/Container';
-import { Section } from '../layout/Section';
 import { SectionHeading } from '../common/SectionHeading';
 import { Reveal } from '../common/Reveal';
-import { Button } from '../common/Button';
-import { CommodityCategory } from '../commodities/CommodityCategory';
-import { CommodityFeature } from '../commodities/CommodityFeature';
-import { CommodityCard } from '../commodities/CommodityCard';
 import { commoditiesData, CommodityItem } from '../../data/commodities';
 
 export interface CommoditiesProps {
@@ -18,91 +13,91 @@ export const Commodities: React.FC<CommoditiesProps> = ({ onSelectCommodity }) =
 
   const categories = [
     { id: 'all', label: 'All Commodities' },
-    { id: 'energy', label: 'Energy' },
-    { id: 'industrial', label: 'Industrial Commodities' },
+    { id: 'energy', label: 'Energy & Petroleum' },
+    { id: 'industrial', label: 'Industrial & Fertilizers' },
     { id: 'agriculture', label: 'Agricultural Commodities' }
   ];
 
-  const { spotlightCommodity, secondaryCommodities } = useMemo(() => {
-    const list: CommodityItem[] =
-      activeCategory === 'all'
-        ? commoditiesData
-        : commoditiesData.filter((item) => item.category === activeCategory);
-
-    const featured = list.find((item) => item.featured) || list[0];
-    const secondary = list.filter((item) => item.id !== featured?.id);
-
-    return {
-      spotlightCommodity: featured,
-      secondaryCommodities: secondary
-    };
+  const filteredCommodities = useMemo(() => {
+    if (activeCategory === 'all') return commoditiesData;
+    return commoditiesData.filter((item) => item.category === activeCategory);
   }, [activeCategory]);
 
   return (
-    <Section id="commodities" className="commodities-section">
+    <section className="section-padding portfolio-wrap" id="commodities">
       <Container>
         <SectionHeading
-          eyebrow="OUR COMMODITIES"
-          title="Connecting Supply with Global Demand."
-          lead="We facilitate commercial engagement across selected energy, industrial, and agricultural commodity markets, subject to product availability, counterparty qualification, and agreed transaction requirements."
+          eyebrow="COMMODITY PORTFOLIO"
+          title="Connecting Supply with International Demand."
+          lead="We facilitate structured commercial engagements across selected energy, industrial, and agricultural markets, subject to counterparty verification and transaction feasibility."
         />
 
-        {/* Category Tabs */}
-        <CommodityCategory
-          categories={categories}
-          activeCategory={activeCategory}
-          onSelectCategory={setActiveCategory}
-        />
+        {/* Category Filters */}
+        <div className="category-tabs" role="tablist" aria-label="Commodity Categories">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              role="tab"
+              aria-selected={activeCategory === cat.id}
+              className={`category-tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
+              onClick={() => setActiveCategory(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
 
-        {/* Featured Spotlight Panel */}
-        {spotlightCommodity && (
-          <Reveal key={`spotlight-${activeCategory}-${spotlightCommodity.id}`}>
-            <CommodityFeature
-              commodity={spotlightCommodity}
-              onEnquire={onSelectCommodity}
-            />
-          </Reveal>
-        )}
-
-        {/* Secondary Editorial Commodities Grid */}
+        {/* 3-Column Balanced Commodity Cards Grid */}
         <div className="commodities-grid">
-          {secondaryCommodities.map((item) => (
+          {filteredCommodities.map((item: CommodityItem) => (
             <Reveal key={item.id}>
-              <CommodityCard
-                commodity={item}
-                onEnquire={onSelectCommodity}
-              />
+              <div className="commodity-card">
+                <span className="card-category-tag">{item.categoryLabel}</span>
+                <h3 className="card-title">{item.name}</h3>
+                <div className="card-tagline">{item.tagline}</div>
+                <p className="card-desc">{item.overview}</p>
+
+                {item.specs && item.specs.length > 0 && (
+                  <div className="card-specs-list">
+                    {item.specs.slice(0, 3).map((spec, sIdx) => (
+                      <div key={sIdx} className="card-spec-item">
+                        <span className="label">{spec.label}</span>
+                        <span className="value">{spec.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="card-footer">
+                  <button
+                    type="button"
+                    className="card-enquire-link"
+                    onClick={() => onSelectCommodity(item.name)}
+                  >
+                    <span>Enquire</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
 
-        {/* Custom Specification Box */}
-        <div
-          style={{
-            marginTop: '2.75rem',
-            padding: '1.35rem 1.85rem',
-            background: 'var(--color-bg-primary)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: 'var(--radius-xs)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1rem'
-          }}
-        >
-          <div style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
-            Looking for a specific petroleum fraction, fertilizer compound, or agricultural requirement not listed above?
+        {/* Custom Specification Enquiry Callout */}
+        <div className="custom-requirement-card">
+          <div>
+            <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--color-walnut)', fontWeight: 600, marginBottom: '0.25rem' }}>
+              Specific Commodity or Tailored IncoTerms?
+            </div>
+            <div style={{ fontSize: '0.86rem', color: 'var(--color-text-secondary)' }}>
+              Looking for a particular petroleum fraction, fertilizer compound, or origin specification not detailed above?
+            </div>
           </div>
-          <Button
-            variant="secondary"
-            href="#contact"
-            style={{ padding: '0.6rem 1.2rem', fontSize: '0.76rem' }}
-          >
-            Submit Specific Specification
-          </Button>
+          <a href="#contact" className="btn btn-secondary">
+            Submit a Custom Requirement
+          </a>
         </div>
       </Container>
-    </Section>
+    </section>
   );
 };

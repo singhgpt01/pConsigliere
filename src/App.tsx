@@ -3,24 +3,19 @@ import { useScrollProgress } from './hooks/useScrollProgress';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/home/Hero';
-import { About } from './components/home/About';
+import { FeaturedCommodity } from './components/home/FeaturedCommodity';
 import { Commodities } from './components/home/Commodities';
 import { CommercialApproach } from './components/home/CommercialApproach';
-import { WhyConsigliere } from './components/home/WhyConsigliere';
 import { GlobalPerspective } from './components/home/GlobalPerspective';
-import { Divisions } from './components/home/Divisions';
 import { Contact } from './components/home/Contact';
 import { TechnologiesModal } from './components/modals/TechnologiesModal';
 import { EnquiryConfirmationModal, FormSubmissionData } from './components/modals/EnquiryConfirmationModal';
 
 export const App: React.FC = () => {
   const { isScrolled, activeSection } = useScrollProgress([
-    'about',
     'commodities',
     'approach',
-    'principles',
-    'global',
-    'divisions',
+    'reach',
     'contact'
   ]);
 
@@ -51,22 +46,31 @@ export const App: React.FC = () => {
         activeSection={activeSection}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Ordered Content Sections */}
       <main>
+        {/* Section A — Hero */}
         <Hero />
-        <About />
+
+        {/* Section B — Featured Commodity (EN590 10 PPM Diesel) */}
+        <FeaturedCommodity onEnquire={handleCommoditySelect} />
+
+        {/* Section C — Commodity Portfolio */}
         <Commodities onSelectCommodity={handleCommoditySelect} />
+
+        {/* Section D — Our Approach (4 Clear Stages) */}
         <CommercialApproach />
-        <WhyConsigliere />
+
+        {/* Section E — International Reach */}
         <GlobalPerspective />
-        <Divisions onOpenTechnologies={() => setTechnologiesModalOpen(true)} />
+
+        {/* Section F — Commercial Enquiry */}
         <Contact
           prefilledCommodity={prefilledCommodity}
           onSubmitSuccess={handleFormSubmitSuccess}
         />
       </main>
 
-      {/* Site Footer */}
+      {/* Section G — Site Footer */}
       <Footer onOpenTechnologies={() => setTechnologiesModalOpen(true)} />
 
       {/* Modals */}

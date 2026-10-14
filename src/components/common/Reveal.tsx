@@ -34,6 +34,13 @@ export const Reveal: React.FC<RevealProps> = ({
     const currentElem = ref.current;
     if (!currentElem) return;
 
+    // Immediately show if already within viewport
+    const rect = currentElem.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 150) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,7 +50,7 @@ export const Reveal: React.FC<RevealProps> = ({
           }
         });
       },
-      { threshold, rootMargin }
+      { threshold, rootMargin: '100px 0px 50px 0px' }
     );
 
     observer.observe(currentElem);

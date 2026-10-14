@@ -11,13 +11,13 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg-primary);
-  color: var(--text-primary);
+  background-color: var(--color-ivory);
+  color: var(--color-text-primary);
   line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -27,7 +27,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
+  transition: color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
 }
 
 button {
@@ -57,6 +57,27 @@ section[id] {
   scroll-margin-top: calc(var(--header-height-scrolled) + 16px);
 }
 
+/* Section Background Variations */
+.section-ivory {
+  background-color: var(--color-ivory);
+  color: var(--color-text-primary);
+}
+
+.section-cream {
+  background-color: var(--color-cream);
+  color: var(--color-text-primary);
+}
+
+.section-sand {
+  background-color: var(--color-sand);
+  color: var(--color-text-primary);
+}
+
+.section-walnut {
+  background-color: var(--color-walnut);
+  color: var(--color-dark-text);
+}
+
 /* Containers */
 .container {
   width: 100%;
@@ -72,8 +93,8 @@ section[id] {
   max-width: var(--container-wide);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .section-padding {
@@ -91,10 +112,11 @@ section[id] {
 
 @media (max-width: 640px) {
   .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
   }
-  .container {
+  .container,
+  .container-wide {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }

@@ -1,115 +1,100 @@
 import React from 'react';
 import { Container } from '../layout/Container';
-import { Section } from '../layout/Section';
 import { Reveal } from '../common/Reveal';
 
 export const GlobalPerspective: React.FC = () => {
   return (
-    <Section id="global" className="global-section">
+    <section className="section-padding reach-wrap" id="reach">
       <Container>
         <Reveal>
-          <div className="global-layout">
-            <div>
-              <span className="section-eyebrow">GLOBAL PERSPECTIVE</span>
+          <div className="reach-split-grid">
+            {/* Left: Concise Narrative */}
+            <div className="reach-text-col">
+              <span className="section-eyebrow">INTERNATIONAL REACH</span>
               <h2 className="section-heading">
-                Local Requirements. International Markets.
+                Cross-Border Coordination across Global Trade Corridors.
               </h2>
-              <p className="section-lead" style={{ marginBottom: '1.5rem' }}>
-                Commodity flows require cross-border coordination across distinct regulatory jurisdictions, commercial banking practices, and logistical hubs.
+              <p className="section-lead" style={{ marginBottom: '1.25rem' }}>
+                Commodity flows require structured coordination across distinct jurisdictions, differing banking conventions, and established maritime logistics channels.
               </p>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.75', marginBottom: '1.75rem' }}>
-                Consigliere Holdings supports commercial connections linking producers, established traders, and industrial buyers across the primary international trading corridors of Europe, the Middle East, the Americas, and the Asia-Pacific region.
+              <p style={{ fontSize: '0.94rem', color: 'var(--color-text-secondary)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                Consigliere Holdings facilitates connections linking origin producers, vetted trading houses, and institutional off-takers across key international hubs in Europe, the Middle East, the Americas, and Asia-Pacific.
               </p>
 
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '2rem',
-                  borderTop: '1px solid var(--border-subtle)',
-                  paddingTop: '1.35rem',
-                  flexWrap: 'wrap'
-                }}
-              >
+              <div className="corridor-metrics">
                 <div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '1rem',
-                      color: 'var(--color-accent-gold)',
-                      fontWeight: '600'
-                    }}
-                  >
-                    Energy & Petrochemicals
-                  </div>
-                  <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
-                    ARA, US Gulf Coast & Middle East Corridors
+                  <div className="corridor-metric-title">Energy & Distillates</div>
+                  <div className="corridor-metric-sub">
+                    ARA Hub, Middle East & US Gulf Coast export channels
                   </div>
                 </div>
                 <div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '1rem',
-                      color: 'var(--color-accent-gold)',
-                      fontWeight: '600'
-                    }}
-                  >
-                    Agricultural Staples
-                  </div>
-                  <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)' }}>
-                    South American & South Asian Origins
+                  <div className="corridor-metric-title">Industrial & Agricultural</div>
+                  <div className="corridor-metric-sub">
+                    Global fertilizer, sulphur, and agricultural commodity flows
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="global-graphic-box">
+            {/* Right: Tasteful Warm SVG Visual */}
+            <div className="reach-graphic-box">
               <svg
-                className="corridor-lines-svg"
-                viewBox="0 0 500 260"
+                viewBox="0 0 520 280"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
                 role="img"
-                aria-label="Schematic diagram of international commodity corridors"
+                aria-label="Schematic diagram of international commodity trade facilitation corridors"
               >
-                <rect width="500" height="260" rx="4" fill="#0A0C0F" />
-                <line x1="40" y1="65" x2="460" y2="65" stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
-                <line x1="40" y1="130" x2="460" y2="130" stroke="rgba(255,255,255,0.08)" />
-                <line x1="40" y1="195" x2="460" y2="195" stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
-                <line x1="125" y1="30" x2="125" y2="230" stroke="rgba(255,255,255,0.04)" />
-                <line x1="250" y1="30" x2="250" y2="230" stroke="rgba(255,255,255,0.06)" />
-                <line x1="375" y1="30" x2="375" y2="230" stroke="rgba(255,255,255,0.04)" />
+                {/* Background & Subtle Coordinate Grid */}
+                <rect width="520" height="280" rx="4" fill="#F5F0E7" stroke="#DCD2C4" />
+                <line x1="40" y1="70" x2="480" y2="70" stroke="#DCD2C4" strokeDasharray="3 3" opacity="0.7" />
+                <line x1="40" y1="140" x2="480" y2="140" stroke="#DCD2C4" opacity="0.9" />
+                <line x1="40" y1="210" x2="480" y2="210" stroke="#DCD2C4" strokeDasharray="3 3" opacity="0.7" />
+                <line x1="130" y1="30" x2="130" y2="250" stroke="#DCD2C4" strokeDasharray="3 3" opacity="0.6" />
+                <line x1="260" y1="30" x2="260" y2="250" stroke="#DCD2C4" opacity="0.8" />
+                <line x1="390" y1="30" x2="390" y2="250" stroke="#DCD2C4" strokeDasharray="3 3" opacity="0.6" />
 
-                <path d="M 120 115 Q 185 60 250 100" stroke="#C6A66B" strokeWidth="1.5" strokeOpacity="0.8" fill="none" />
-                <path d="M 250 100 Q 315 75 390 120" stroke="#C6A66B" strokeWidth="1.5" strokeOpacity="0.8" fill="none" />
-                <path d="M 140 160 Q 230 190 320 135" stroke="rgba(198,166,107,0.4)" strokeWidth="1.2" strokeDasharray="5 5" fill="none" />
+                {/* Corridor Arcs */}
+                <path d="M 130 130 Q 195 65 260 115" stroke="#B99A62" strokeWidth="2" fill="none" />
+                <path d="M 260 115 Q 325 80 400 135" stroke="#B99A62" strokeWidth="2" fill="none" />
+                <path d="M 145 175 Q 240 215 340 150" stroke="#654735" strokeWidth="1.5" strokeDasharray="4 4" fill="none" opacity="0.75" />
 
-                <circle cx="120" cy="115" r="4" fill="#C6A66B" />
-                <circle cx="250" cy="100" r="4" fill="#C6A66B" />
-                <circle cx="390" cy="120" r="4" fill="#C6A66B" />
-                <circle cx="320" cy="135" r="3" fill="#A2A8B0" />
-                <circle cx="140" cy="160" r="3" fill="#A2A8B0" />
+                {/* Nodes */}
+                <circle cx="130" cy="130" r="5" fill="#30231D" stroke="#B99A62" strokeWidth="2" />
+                <circle cx="260" cy="115" r="5" fill="#30231D" stroke="#B99A62" strokeWidth="2" />
+                <circle cx="400" cy="135" r="5" fill="#30231D" stroke="#B99A62" strokeWidth="2" />
+                <circle cx="340" cy="150" r="3.5" fill="#654735" />
+                <circle cx="145" cy="175" r="3.5" fill="#654735" />
 
-                <text x="120" y="135" fill="#A2A8B0" fontSize="9" fontFamily="monospace" textAnchor="middle">Americas</text>
-                <text x="250" y="88" fill="#F3F0E8" fontSize="9" fontFamily="monospace" textAnchor="middle">Europe / MidEast</text>
-                <text x="390" y="140" fill="#A2A8B0" fontSize="9" fontFamily="monospace" textAnchor="middle">Asia-Pacific</text>
+                {/* Node Labels */}
+                <text x="130" y="112" fill="#30231D" fontSize="10.5" fontFamily="var(--font-serif)" fontWeight="600" textAnchor="middle">Americas</text>
+                <text x="130" y="152" fill="#766B60" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">US GULF / LATAM</text>
+
+                <text x="260" y="96" fill="#30231D" fontSize="10.5" fontFamily="var(--font-serif)" fontWeight="600" textAnchor="middle">Europe & Middle East</text>
+                <text x="260" y="137" fill="#766B60" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">ARA / AG CORRIDORS</text>
+
+                <text x="400" y="118" fill="#30231D" fontSize="10.5" fontFamily="var(--font-serif)" fontWeight="600" textAnchor="middle">Asia-Pacific</text>
+                <text x="400" y="157" fill="#766B60" fontSize="8" fontFamily="var(--font-mono)" textAnchor="middle">DESTINATION HUBS</text>
               </svg>
 
               <div
                 style={{
                   marginTop: '1.25rem',
                   textAlign: 'center',
-                  fontSize: '0.7rem',
-                  color: 'var(--text-muted)',
-                  fontFamily: 'var(--font-mono)'
+                  fontSize: '0.72rem',
+                  color: 'var(--color-text-muted)',
+                  fontFamily: 'var(--font-mono)',
+                  letterSpacing: '0.08em'
                 }}
               >
-                ILLUSTRATIVE SCHEMATIC OF INTERNATIONAL COMMODITY FACILITATION CHANNELS
+                INTERNATIONAL COMMODITY TRADE CORRIDOR FACILITATION
               </div>
             </div>
           </div>
         </Reveal>
       </Container>
-    </Section>
+    </section>
   );
 };

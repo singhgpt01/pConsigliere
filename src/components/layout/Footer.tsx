@@ -1,17 +1,17 @@
 import React from 'react';
+import { Container } from './Container';
 import { brandData } from '../../data/commodities';
 import { footerColumns } from '../../data/navigation';
-import { Container } from './Container';
 
 export interface FooterProps {
-  onOpenTechnologies: () => void;
+  onOpenTechnologies?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenTechnologies }) => {
   const currentYear = new Date().getFullYear();
 
   const handleLinkClick = (e: React.MouseEvent, isModalTrigger?: boolean) => {
-    if (isModalTrigger) {
+    if (isModalTrigger && onOpenTechnologies) {
       e.preventDefault();
       onOpenTechnologies();
     }
@@ -21,22 +21,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTechnologies }) => {
     <footer className="site-footer">
       <Container>
         <div className="footer-top-grid">
-          <div>
-            <div className="brand-identity" style={{ marginBottom: '1.15rem' }}>
+          {/* Brand Column */}
+          <div className="footer-brand">
+            <a href="#" className="brand-identity">
               <div className="brand-monogram">C</div>
               <div className="brand-title-wrap">
                 <span className="brand-wordmark">CONSIGLIERE HOLDINGS</span>
                 <span className="brand-sub">Commercial Facilitation</span>
               </div>
-            </div>
-            <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.75', maxWidth: '360px', marginBottom: '1.25rem' }}>
-              {brandData.supportingStatement} {brandData.positioning} Connecting qualified counterparties across selected international energy, industrial, and agricultural markets.
+            </a>
+            <p style={{ fontSize: '0.86rem', color: 'var(--color-sand)', lineHeight: '1.7', maxWidth: '340px', marginTop: '1rem', marginBottom: '1.25rem' }}>
+              International commodity commercial facilitation connecting vetted counterparties across global energy, industrial, and agricultural markets.
             </p>
-            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-              Domain: <a href={brandData.domain} style={{ color: 'var(--color-accent-gold)' }}>consigliereholdings.com</a>
+            <div style={{ fontSize: '0.8rem', color: 'var(--color-sand)', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+              <div>Commercial Desk: <a href={`mailto:${brandData.deskEmail}`} style={{ color: 'var(--color-brass-light)' }}>{brandData.deskEmail}</a></div>
+              <div>Direct Communication: <a href={`mailto:${brandData.contactEmail}`} style={{ color: 'var(--color-brass-light)' }}>{brandData.contactEmail}</a></div>
             </div>
           </div>
 
+          {/* Navigation & Commodity Columns */}
           {footerColumns.map((col, idx) => (
             <div key={idx}>
               <h4 className="footer-col-header">{col.title}</h4>
@@ -56,18 +59,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenTechnologies }) => {
           ))}
         </div>
 
-        {/* Commodity Availability Legal Disclaimer */}
-        <div className="footer-disclaimer-text">
-          <strong>Commercial Disclaimer:</strong> Consigliere Holdings operates as an independent commercial facilitator and intermediary, connecting qualified buyers, suppliers, procurement partners, and other commercial counterparties across international commodity markets. All commodity availability, specifications, allocations, quantities, prices, and transaction terms are strictly subject to commercial confirmation, independent surveyor assay, and counterparty qualification. Consigliere Holdings does not claim title ownership of refining assets, storage facilities, maritime vessels, or physical inventories unless specifically and independently verified.
+        {/* Commercial Disclaimer */}
+        <div className="footer-disclaimer-box">
+          <strong style={{ color: 'var(--color-brass-light)' }}>Commercial Intermediation Disclosure:</strong> Consigliere Holdings operates as an independent commercial facilitator and transaction coordinator. All commodity transactions, specifications, refinery allocations, volumes, and delivery schedules are subject to counterparty verification, independent inspection (SGS/Saybolt), and definitive bilateral contract execution. Consigliere Holdings does not hold title to physical refining assets, storage facilities, or vessels unless expressly verified.
         </div>
 
+        {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div>
             © {currentYear} Consigliere Holdings Ltd. All rights reserved.
           </div>
-          <div style={{ display: 'flex', gap: '2rem' }}>
-            <span>Commercial Intermediation</span>
-            <span>International Facilitation</span>
+          <div style={{ display: 'flex', gap: '1.75rem' }}>
+            <span>Commercial Facilitation</span>
+            <span>Structured Trade Intermediation</span>
           </div>
         </div>
       </Container>

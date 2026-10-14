@@ -1,8 +1,8 @@
 /* ==========================================================================
-   CONSIGLIERE HOLDINGS - TYPOGRAPHY
-   Serif: Cormorant Garamond (Editorial, Sovereign, Dignified)
+   CONSIGLIERE HOLDINGS - TYPOGRAPHY SYSTEM
+   Serif: Cormorant Garamond / DM Serif Display (Editorial, Dignified, Private Trading House)
    Sans: Manrope (Crisp, Highly Legible, Modern Corporate)
-   Mono: JetBrains Mono (Data, Specs, Terminal Coordinates)
+   Mono: JetBrains Mono (Data, Technical Specifications, Logistics Terms)
    ========================================================================== */
 
 .section-eyebrow {
@@ -11,10 +11,10 @@
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--color-accent-gold);
-  margin-bottom: 1.15rem;
+  color: var(--color-brass-dark);
+  margin-bottom: 1rem;
 }
 
 .section-eyebrow::after {
@@ -22,24 +22,35 @@
   display: inline-block;
   width: 24px;
   height: 1px;
-  background: var(--color-accent-gold-border);
+  background: var(--color-brass);
   margin-left: 0.75rem;
+  opacity: 0.7;
 }
 
 .section-heading {
   font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-size: clamp(2.2rem, 3.6vw, 3.2rem);
   font-weight: 500;
-  line-height: 1.16;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-walnut);
   margin-bottom: 1.1rem;
 }
 
 .section-lead {
   font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: var(--color-text-secondary);
   line-height: 1.7;
   max-width: 680px;
   font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-walnut);
+  font-family: var(--font-serif);
+  font-weight: 500;
+}
+
+p {
+  color: var(--color-text-primary);
 }
