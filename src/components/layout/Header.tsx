@@ -41,11 +41,10 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled, activeSection }) => 
           </nav>
 
           {/* Actions & Mobile Menu Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
             <a
               href="#contact"
               className="btn btn-primary nav-cta-desktop"
-              style={{ padding: '0.65rem 1.35rem', fontSize: '0.78rem' }}
             >
               Discuss a Requirement
             </a>
