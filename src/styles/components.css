@@ -1595,6 +1595,29 @@
   min-height: 110px;
 }
 
+.form-input.input-error,
+.form-select.input-error,
+.form-textarea.input-error {
+  border-color: #E02424;
+  background: #FFF8F8;
+}
+
+.form-input.input-error:focus,
+.form-select.input-error:focus,
+.form-textarea.input-error:focus {
+  border-color: #C81E1E;
+  box-shadow: 0 0 0 2px rgba(224, 36, 36, 0.15);
+}
+
+.field-error-text {
+  display: block;
+  font-size: 0.76rem;
+  color: #C81E1E;
+  margin-top: 0.35rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
 /* --------------------------------------------------------------------------
    Footer (Section G - Deep Walnut Background with Warm Ivory Text)
    -------------------------------------------------------------------------- */

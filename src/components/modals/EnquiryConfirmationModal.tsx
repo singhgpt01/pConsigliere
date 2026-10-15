@@ -12,7 +12,9 @@ export interface FormSubmissionData {
   destination: string;
   deliveryTerms: string;
   description: string;
-  contactMethod: string;
+  contactMethod?: string;
+  referenceNumber?: string;
+  submittedAt?: string;
 }
 
 export interface EnquiryConfirmationModalProps {
@@ -113,6 +115,24 @@ Preferred Contact Method: ${data.contactMethod}`
         >
           Enquiry Summary Generated
         </h3>
+
+        {data.referenceNumber && (
+          <div style={{ marginBottom: '1.25rem' }}>
+            <span style={{
+              display: 'inline-block',
+              padding: '0.35rem 0.75rem',
+              background: 'var(--color-bg-secondary)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: 'var(--radius-xs)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.78rem',
+              fontWeight: 600,
+              color: 'var(--color-brass-dark)'
+            }}>
+              Reference: {data.referenceNumber}
+            </span>
+          </div>
+        )}
 
         <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: '1.7', marginBottom: '1.5rem' }}>
           Thank you, <strong>{data.fullName}</strong>. Your commercial requirement regarding <strong>{data.commodity}</strong> on behalf of <strong>{data.companyName}</strong> has been structured.
