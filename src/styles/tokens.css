@@ -75,8 +75,8 @@
   /* Layout Geometry */
   --container-max: 1220px;
   --container-wide: 1340px;
-  --header-height: 76px;
-  --header-height-scrolled: 66px;
+  --header-height: 82px;
+  --header-height-scrolled: 70px;
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
