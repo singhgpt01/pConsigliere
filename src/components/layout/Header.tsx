@@ -23,8 +23,11 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled, activeSection }) => 
         <div className="container-wide nav-inner">
           {/* Brand Identity */}
           <a href="#" className="brand-identity" aria-label="Consigliere Holdings Home">
-            <div className="brand-monogram">C</div>
-            <span className="brand-wordmark">CONSIGLIERE HOLDINGS</span>
+            <img
+              src="/images/consigliere-holdings-logo.png"
+              alt="Consigliere Holdings"
+              className="site-logo-img"
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -71,23 +74,6 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled, activeSection }) => 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="mobile-nav-panel">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <div className="brand-identity">
-              <div className="brand-monogram">C</div>
-              <span className="brand-wordmark" style={{ fontSize: '1rem' }}>CONSIGLIERE</span>
-            </div>
-            <button
-              type="button"
-              onClick={closeMobileMenu}
-              style={{ padding: '0.5rem', color: 'var(--color-walnut)', background: 'none', border: 'none', cursor: 'pointer' }}
-              aria-label="Close menu"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {mainNavLinks.map((link) => (
               <a
