@@ -3,6 +3,7 @@ import { Container } from '../layout/Container';
 import { Reveal } from '../common/Reveal';
 import { brandData, commoditiesData } from '../../data/commodities';
 import { FormSubmissionData } from '../modals/EnquiryConfirmationModal';
+import { addEnquiry } from '../../services/enquiryService';
 
 export interface ContactProps {
   prefilledCommodity: string;
@@ -142,6 +143,22 @@ export const Contact: React.FC<ContactProps> = ({ prefilledCommodity, onSubmitSu
       const confirmedReference = data.reference || `CH-ENQ-${Date.now().toString(36).toUpperCase()}`;
       setSubmissionReference(confirmedReference);
       setLastSubmittedSnapshot({ ...formFields });
+
+      // Save commercial enquiry to Firestore queries collection for Admin Dashboard
+      addEnquiry({
+        fullName: formFields.fullName,
+        companyName: formFields.companyName,
+        businessEmail: formFields.businessEmail,
+        country: formFields.country,
+        commodity: formFields.commodity,
+        deliveryTerms: formFields.deliveryTerms,
+        quantity: formFields.quantity,
+        destination: formFields.destination,
+        description: formFields.description,
+        contactMethod: formFields.contactMethod,
+        source: 'form',
+        reference: confirmedReference
+      }).catch(err => console.warn('[Firestore] Non-blocking enquiry record save:', err));
 
       // Reset form fields only after server confirmed success
       setFormFields(INITIAL_FORM_STATE);
