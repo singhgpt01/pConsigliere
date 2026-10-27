@@ -116,6 +116,32 @@ export const Contact: React.FC<ContactProps> = ({ prefilledCommodity, onSubmitSu
     }
 
     setIsSubmitting(true);
+    setServerError(null);
+
+    const generatedReference = `CH-ENQ-${Date.now().toString(36).toUpperCase()}`;
+
+    // 1. Immediately persist enquiry into Firestore queries collection
+    const firestoreSavePromise = addEnquiry({
+      fullName: formFields.fullName,
+      companyName: formFields.companyName,
+      businessEmail: formFields.businessEmail,
+      country: formFields.country,
+      commodity: formFields.commodity,
+      deliveryTerms: formFields.deliveryTerms,
+      quantity: formFields.quantity,
+      destination: formFields.destination,
+      description: formFields.description,
+      contactMethod: formFields.contactMethod,
+      source: 'form',
+      reference: generatedReference
+    }).catch(err => {
+      console.warn('[Firestore] Non-blocking enquiry record save warning:', err);
+      return null;
+    });
+
+    // 2. Dispatch transactional notification via /api/enquire
+    let confirmedReference = generatedReference;
+    let emailDelivered = false;
 
     try {
       const response = await fetch('/api/enquire', {
@@ -128,57 +154,40 @@ export const Contact: React.FC<ContactProps> = ({ prefilledCommodity, onSubmitSu
 
       const data = await response.json().catch(() => null);
 
-      if (!response.ok || !data?.success) {
-        // Submission failed: keep user's entered info intact and display server message
-        const errMsg = data?.message || 'Unable to submit your enquiry at this time. Please try again, or contact our commercial desk directly.';
-        setServerError(errMsg);
-        if (data?.errors) {
-          setFieldErrors(data.errors);
+      if (response.ok && data?.success) {
+        emailDelivered = true;
+        if (data.reference) {
+          confirmedReference = data.reference;
         }
-        setIsSubmitting(false);
-        return;
+      } else if (data?.errors) {
+        setFieldErrors(data.errors);
       }
+    } catch (err) {
+      console.warn('[COMMERCIAL_ENQUIRY_API_WARNING]', err);
+    }
 
-      // Submission confirmed by server
-      const confirmedReference = data.reference || `CH-ENQ-${Date.now().toString(36).toUpperCase()}`;
+    const firestoreDocId = await firestoreSavePromise;
+
+    // If recorded in Firestore OR email delivered, mark as success!
+    if (firestoreDocId || emailDelivered) {
       setSubmissionReference(confirmedReference);
       setLastSubmittedSnapshot({ ...formFields });
-
-      // Save commercial enquiry to Firestore queries collection for Admin Dashboard
-      addEnquiry({
-        fullName: formFields.fullName,
-        companyName: formFields.companyName,
-        businessEmail: formFields.businessEmail,
-        country: formFields.country,
-        commodity: formFields.commodity,
-        deliveryTerms: formFields.deliveryTerms,
-        quantity: formFields.quantity,
-        destination: formFields.destination,
-        description: formFields.description,
-        contactMethod: formFields.contactMethod,
-        source: 'form',
-        reference: confirmedReference
-      }).catch(err => console.warn('[Firestore] Non-blocking enquiry record save:', err));
-
-      // Reset form fields only after server confirmed success
       setFormFields(INITIAL_FORM_STATE);
       setFieldErrors({});
       setSubmitted(true);
       setIsSubmitting(false);
 
-      // Trigger optional confirmation summary modal
       onSubmitSuccess({
         ...formFields,
         referenceNumber: confirmedReference,
-        submittedAt: data.timestamp || new Date().toISOString()
+        submittedAt: new Date().toISOString()
       });
-
-    } catch (err) {
-      console.error('[COMMERCIAL_ENQUIRY_SUBMIT_FAILED]', err);
-      // Retain entered values on network failure
-      setServerError('A network connectivity error occurred while sending your requirement. Your entered specifications have been preserved. Please retry or email info@consigliereholdings.com.');
-      setIsSubmitting(false);
+      return;
     }
+
+    // Fallback: If both network paths were unreachable
+    setServerError('Unable to submit your requirement at this moment. Please check your network connection or contact our commercial desk at info@consigliereholdings.com.');
+    setIsSubmitting(false);
   };
 
   const handleCopyReference = () => {
